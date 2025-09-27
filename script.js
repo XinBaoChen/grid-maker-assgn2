@@ -10,7 +10,19 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    // If the grid is empty, adding a column is the same as adding a row
+    if (numRows === 0) {
+        addR();
+        return;
+    }
+
+    let allRows = document.querySelectorAll("#grid tr");
+    for (let i = 0; i < numRows; i++) {
+        // Insert cell at the end of the row
+        let cell = allRows[i].insertCell(-1); 
+
+    }
+    numCols++;
 }
 
 // Remove a row
@@ -20,8 +32,24 @@ function removeR() {
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    if (numCols === 0) {
+        //no col to remove
+        return; 
+    }
+    let allRows = document.querySelectorAll("#grid tr");
+    for (let i = 0; i < numRows; i++) {
+        // Delete the last cell in each row
+        allRows[i].deleteCell(-1); 
+    }
+    numCols--;
+
+    // If all columns are gone, we should reset the grid
+    if (numCols === 0) {
+        document.getElementById("grid").innerHTML = "";
+        numRows = 0;
+    }
 }
+
 
 // Set global variable for selected color
 function selectColor(){
