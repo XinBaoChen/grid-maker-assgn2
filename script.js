@@ -5,7 +5,23 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    let grid = document.getElementById("grid");
+    //row should be at the end
+    let newRow = grid.insertRow(-1); 
+
+    // If this is the first row, need to create the first cell
+    if (numCols === 0) {
+        let cell = newRow.insertCell(0);
+        // We'll add the onclick for coloring in the coloring branch
+        numCols++;
+    } else {
+        // Add cells to match the current number of columns
+        for (let i = 0; i < numCols; i++) {
+            let cell = newRow.insertCell(i);
+            // We'll add the onclick for coloring in the coloring branch
+        }
+    }
+    numRows++;
 }
 
 // Add a column
@@ -25,9 +41,19 @@ function addC() {
     numCols++;
 }
 
-// Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    if (numRows === 0) {
+        return; 
+    }
+    let grid = document.getElementById("grid");
+    // Delete the last row
+    grid.deleteRow(-1);
+    numRows--;
+
+    // If all rows are gone, reset the column count too
+    if (numRows === 0) {
+        numCols = 0;
+    }
 }
 
 // Remove a column
