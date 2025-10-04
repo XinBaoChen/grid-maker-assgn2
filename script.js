@@ -85,15 +85,36 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    if (!colorSelected || colorSelected === "SELECT") {
+        alert("Please select a color from the dropdown menu first.");
+        return;
+    }
+    let allCells = document.getElementsByTagName("td");
+    for (let i = 0; i < allCells.length; i++) {
+        // If the cell has no background color style, it's has no color
+        if (!allCells[i].style.backgroundColor) {
+            allCells[i].style.backgroundColor = colorSelected;
+        }
+    }
 }
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    if (!colorSelected || colorSelected === "SELECT") {
+        alert("Please select a color from the dropdown menu first.");
+        return;
+    }
+    let allCells = document.getElementsByTagName("td");
+    for (let i = 0; i < allCells.length; i++) {
+        allCells[i].style.backgroundColor = colorSelected;
+    }
 }
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    let allCells = document.getElementsByTagName("td");
+    for (let i = 0; i < allCells.length; i++) {
+        //Reset to default color 
+        allCells[i].style.backgroundColor = ""; 
+    }
 }
