@@ -6,19 +6,18 @@ let colorSelected;
 // Add a row
 function addR() {
     let grid = document.getElementById("grid");
-    //row should be at the end
-    let newRow = grid.insertRow(-1); 
+    let newRow = grid.insertRow(-1);
 
-    // If this is the first row, need to create the first cell
+    // If this is the first row, we need to create the first column too
     if (numCols === 0) {
         let cell = newRow.insertCell(0);
-        // We'll add the onclick for coloring in the coloring branch
+        cell.onclick = function() { colorCell(this); };
         numCols++;
     } else {
         // Add cells to match the current number of columns
         for (let i = 0; i < numCols; i++) {
             let cell = newRow.insertCell(i);
-            // We'll add the onclick for coloring in the coloring branch
+            cell.onclick = function() { colorCell(this); };
         }
     }
     numRows++;
@@ -34,13 +33,25 @@ function addC() {
 
     let allRows = document.querySelectorAll("#grid tr");
     for (let i = 0; i < numRows; i++) {
-        // Insert cell at the end of the row
-        let cell = allRows[i].insertCell(-1); 
-
+        let cell = allRows[i].insertCell(-1); // Insert cell at the end of the row
+        cell.onclick = function() { colorCell(this); };
     }
     numCols++;
 }
 
+// Function to color a cell
+function colorCell(cell) {
+    // Check if a color has been selected
+    if (!colorSelected || colorSelected === "SELECT") {
+        alert("Please select a color from the dropdown menu first.");
+        return;
+    }
+    cell.style.backgroundColor = colorSelected;
+}
+
+
+
+// Remove a row 
 function removeR() {
     if (numRows === 0) {
         return; 
