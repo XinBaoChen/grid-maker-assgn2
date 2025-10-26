@@ -2,7 +2,7 @@
 This repository is the starter code for Assignment 2 - Grid Maker.
 
 ### Live Link
-[Website link](https://grid-maker-assgn2-764c9kx6g-xinbaochens-projects.vercel.app/)
+[Website link]( https://grid-maker-assgn2-git-main-xinbaochens-projects.vercel.app?_vercel_share=rnEFm7BYT6Lj3cFe33NI8wqtqBQ4zugv )
 
 ----------
 ### 1. Use the following process to ***import*** the Assignment 2 starter code repository to your GitHub account as the starter codebase
